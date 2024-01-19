@@ -36,7 +36,7 @@ export const LoginPage = () => {
         </div>
         <div className="mt-1 md:mt-7 flex flex-col md:flex-row gap-3 md:justify-between mx-1 md:items-center">
           <input type="submit" value='Iniciar sesión' className="bg-white text-gray-800 hover:bg-slate-300 active:bg-slate-900 active:text-white cursor-pointer px-3 py-2 rounded-lg font-semibold" />
-          <button onClick={handleSignInWithGoogle} className="bg-white text-gray-800 font-semibold justify-center p-2 flex items-center gap-2 rounded-lg">Acceder con <FaGoogle /></button>
+          <button type="button" onClick={handleSignInWithGoogle} className="bg-white text-gray-800 font-semibold justify-center p-2 flex items-center gap-2 rounded-lg">Acceder con <FaGoogle /></button>
         </div>
         <p className="text-sm self-end">¿No tienes una cuenta? <Link to='/auth/register' className="underline" >Registrate aqui.</Link></p>
       </form>   
