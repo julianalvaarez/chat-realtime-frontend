@@ -3,7 +3,7 @@ import io from "socket.io-client";
 import { Message } from "../components";
 
 // Crea una instancia de socket.io-client conectada al backend
-const socket = io("/");
+const socket = io("https://chat-realtime-backend-dev-nxxr.1.us-1.fl0.io");
 
 export const Chat = ({username}) => {
   // Estado para manejar el input del mensaje y la lista de mensajes
