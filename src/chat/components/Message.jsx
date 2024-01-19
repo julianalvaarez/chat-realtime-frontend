@@ -5,7 +5,7 @@ export const Message = ({message, username}) => {
       >
         <div className={`p-2 rounded-md min-w-16 
         ${message.from === "Me" ? "bg-sky-800 ml-auto" : "bg-slate-700 mr-auto"}`}>
-          <span className="block font-semibold text-xs">{username}</span>
+          <span className="block font-semibold text-xs">{message.from === 'Me' ? 'Me' : message.username}</span>
           <span>{message.body}</span>
         </div>
         <p className="text-xs mx-2 text-slate-400">{message.time}</p>

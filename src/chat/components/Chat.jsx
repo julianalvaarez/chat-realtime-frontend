@@ -8,7 +8,15 @@ const socket = io("https://chat-realtime-backend-dev-nxxr.1.us-1.fl0.io");
 export const Chat = ({username}) => {
   // Estado para manejar el input del mensaje y la lista de mensajes
   const [message, setMessage] = useState("");
-  const [messageList, setMessageList] = useState([]);
+  const [messageList, setMessageList] = useState(() => {
+    const storedMessages = localStorage.getItem("messagesList");
+    return storedMessages ? JSON.parse(storedMessages) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("messagesList", JSON.stringify(messageList));
+  }, [messageList])
+  
   
   function getTime() {
     // Fecha original
@@ -33,6 +41,7 @@ export const Chat = ({username}) => {
       body: message,
       time,
       from: "Me",
+      username
     };
     // Actualiza el estado messageList agregando el nuevo mensaje
     setMessageList([...messageList, newMessage]);
@@ -41,6 +50,7 @@ export const Chat = ({username}) => {
     socket.emit("message", message);
     setMessage("");
   }
+  console.log(messageList)
 
   // función que recibe un mensaje y actualiza el estado messageList
   const receiveMessage = (message) =>
